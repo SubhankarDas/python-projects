@@ -9,6 +9,11 @@ print(var2)
 print(var3)
 print(var4)
 
+print(type(var1))  # get data types of variables
+print(type(var2))
+print(type(var3))
+print(type(var4))
+
 del var1  # deletes reference to var1
 
 #--- STRING ---#
