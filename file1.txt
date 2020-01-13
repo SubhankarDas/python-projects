@@ -1,0 +1,2 @@
+Old text file contents are over written here. Adding some more lines of text. 
+This is a new line with a line break
