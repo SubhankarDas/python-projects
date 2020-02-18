@@ -3,6 +3,7 @@ chart.svg
 decisiontree.png
 chromedriver.exe
 screenshot.png
+digits.csv
 
 images/test-images/**
 images/train-images/**

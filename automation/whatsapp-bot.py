@@ -1,38 +1,25 @@
-from selenium import webdriver
-from selenium.webdriver.support.ui import WebDriverWait as driver_wait
-from selenium.webdriver.support import expected_conditions as ec
-from selenium.webdriver.common.by import By as by
-from selenium.webdriver.common.keys import Keys
+import whatsapp_helper as wh
+import time
 
-wait_timeout = 30
+USER_NAME = "Bhai"
+
+wh.open_url("https://web.whatsapp.com")
 
 
-WEBDRIVER_PATH = "chromedriver.exe"
-driver = webdriver.Chrome(WEBDRIVER_PATH)
+def new_chat():
+    wh.new_chat()
+    wh.search_contact(USER_NAME)
+    time.sleep(2)
+    wh.select_chat(USER_NAME)
+    wh.send_message("You are hacked!")
 
-driver.get("https://web.whatsapp.com")
 
-chat_username = "Bhai"
+def recent_chat():
+    wh.search_chat(USER_NAME)
+    wh.select_chat(USER_NAME)
+    wh.send_message("You are hacked!")
 
-# ---------------------------------------------
-chat_search_input = driver_wait(driver, wait_timeout).until(
-    ec.presence_of_element_located((by.XPATH, "//input[@title='Search or start new chat']")))
 
-chat_search_input.send_keys(chat_username)
+new_chat()
 
-# ---------------------------------------------
-'''
-driver.find_element_by_xpath("//div[contains(text(),'Add User')]")
-'''
-chat_username_elem = driver_wait(driver, wait_timeout).until(
-    ec.presence_of_element_located((by.XPATH, "//span[@title='"+chat_username+"']")))
-print(chat_username_elem)
-
-chat_username_elem.click()
-
-# ---------------------------------------------
-chat_msg = driver_wait(driver, wait_timeout).until(
-    ec.presence_of_element_located((by.XPATH, "//div[@contenteditable='true']")))
-chat_msg.send_keys('Hi from bot! Testing..')
-
-chat_msg.send_keys(Keys.ENTER)
+wh.close_browser()
